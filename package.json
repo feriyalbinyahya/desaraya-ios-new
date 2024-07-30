@@ -1,5 +1,5 @@
 {
-  "name": "HaraFoundation",
+  "name": "desaraya",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -34,6 +34,7 @@
     "react-native-easy-bottomsheet": "^1.0.11",
     "react-native-paper": "^5.12.3",
     "react-native-reanimated": "^3.9.0-rc.1",
+    "react-native-rename": "^3.2.14",
     "react-native-safe-area-context": "^4.10.1",
     "react-native-screens": "^3.31.1",
     "react-native-snackbar": "^2.6.2",
