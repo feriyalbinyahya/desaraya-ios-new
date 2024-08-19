@@ -99,7 +99,7 @@ const RegisterScreen = ({navigation}) => {
           setLoading(false);
         })
         .catch(err=>{
-          console.log(err);
+          console.log(err.response);
           setLoading(false);
         })
       }
@@ -166,7 +166,7 @@ const RegisterScreen = ({navigation}) => {
             text="Daftar" backgroundColor={Color.primaryMain} height={44} />
         <View style={styles.tidakPunyaAkun}>
             <Text style={styles.textBelumPunyaAkun}>Belum punya akun?</Text>
-            <Pressable onPress={()=> navigation.goBack()}><Text style={styles.textDaftar}>Masuk</Text></Pressable>
+            <Pressable onPress={()=> navigation.pop()}><Text style={styles.textDaftar}>Masuk</Text></Pressable>
         </View>
       </View>
       <AwesomeAlert

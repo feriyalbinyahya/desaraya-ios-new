@@ -71,7 +71,7 @@ const DataDiriScreen = ({navigation}) => {
     const getJobData = () =>{
         RegistrationService.getAllPekerjaan()
         .then(res=>{
-          console.log(res.data.data);
+          console.log(res.data);
           setJobData(res.data.data);
         })
         .catch(err=>{

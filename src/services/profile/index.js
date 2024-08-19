@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import Request from '../Request';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { prefixApp } from '../../utils/environment';
 
 let headers = {
     'Accept': 'application/json',
@@ -21,37 +22,37 @@ const getHeaders = async() => {
 
 getProfile = async () => {
     let headersToken = await getHeaders();
-    return Request.get(`user/profile`, {headers: headersToken});
+    return Request.get(`${prefixApp}user/profile`, {headers: headersToken});
 }
 
 putFullnameUsername = async (data) => {
     let headersToken = await getHeaders();
-    return Request.put(`user/nama-username/update`, data, {headers: headersToken,  timeout: 8000,});
+    return Request.put(`${prefixApp}user/nama-username/update`, data, {headers: headersToken,  timeout: 8000,});
 }
 
 putFotoProfil = async (data) => {
     let headersToken = await getHeaders();
-    return Request.put(`user/foto/update`, data, {headers: headersToken,  timeout: 8000,});
+    return Request.put(`${prefixApp}user/foto/update`, data, {headers: headersToken,  timeout: 8000,});
 }
 
 putNoHp = async (data) => {
     let headersToken = await getHeaders();
-    return Request.put(`user/hp/update`, data, {headers: headersToken,  timeout: 8000,});
+    return Request.put(`${prefixApp}user/hp/update`, data, {headers: headersToken,  timeout: 8000,});
 }
 
 putPassword = async (data) => {
     let headersToken = await getHeaders();
-    return Request.put(`user/password/update`, data, {headers: headersToken,  timeout: 8000,});
+    return Request.put(`${prefixApp}user/password/update`, data, {headers: headersToken,  timeout: 8000,});
 }
 
 refreshToken = async (data) => {
     let headersToken = await getHeaders();
-    return Request.post(`user/refreshToken`, data, {headers: headersToken});
+    return Request.post(`${prefixApp}user/refreshToken`, data, {headers: headersToken});
 }
 
 privacyPolicy = async () => {
     let headersToken = await getHeaders();
-    return Request.post(`user/registrasi/policy`, {}, {headers: headersToken});
+    return Request.post(`${prefixApp}user/registrasi/policy`, {}, {headers: headersToken});
 }
 
 

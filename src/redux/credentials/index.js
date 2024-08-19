@@ -13,6 +13,8 @@ const initialState = {
     fotoProfil: '',
     isReferalOrganization: 0,
     statusPolicy: 0,
+    keaktifan: '',
+    idRelawan: ''
 
 }
 
@@ -33,6 +35,7 @@ export const credentialSlice = createSlice({
       state.fotoProfil = action.payload.fotoProfil;
       state.isReferalOrganization = action.payload.isReferalOrganization;
       state.statusPolicy = action.payload.statusPolicy;
+      state.idRelawan = action.payload.idRelawan;
     },
     deleteCredentials: (state) => {
         state.idOrganisasi = '';
@@ -49,6 +52,9 @@ export const credentialSlice = createSlice({
     },
     setPrivacyPolicy : (state, action) => {
       state.statusPolicy = 1;
+    },
+    setKeaktifan: (state, action) => {
+      state.keaktifan = action.payload.keaktifan;
     }
   },
   extraReducers: (builder) => {
@@ -62,5 +68,5 @@ export const credentialSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setCredentials, deleteCredentials, setPrivacyPolicy} = credentialSlice.actions
+export const { setCredentials, deleteCredentials, setPrivacyPolicy, setKeaktifan} = credentialSlice.actions
 export default credentialSlice.reducer

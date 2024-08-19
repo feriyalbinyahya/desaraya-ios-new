@@ -35,15 +35,15 @@
 		4A9DA23AE3014828A1A46161 /* WorkSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCBDCA0A41AF46B3A92C3D8C /* WorkSans-ExtraLight.ttf */; };
 		4C121C9C4E7044B0A3BE85BB /* WorkSans-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 626D9AE88FB647C895FE5839 /* WorkSans-BlackItalic.ttf */; };
 		50C73F8BB6BB423388149560 /* WorkSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A79E5E41114BB28C5CD836 /* WorkSans-SemiBoldItalic.ttf */; };
+		53C18B5FE20892FFAEE1D144 /* Pods_DesaRaya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B60A21FB7C1758308FEB4762 /* Pods_DesaRaya.framework */; };
 		5BC0445536CF43E89BA5A911 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB9FA74EB2CC4B08A3823A6F /* Roboto-Thin.ttf */; };
 		5C783B23DB3749EAA250AB2B /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5AD135C5EF5439EBAE7CCB9 /* Poppins-Black.ttf */; };
 		5CA0010366614F6CAFAE9401 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF46B83413E54D87B0A2B851 /* Inter-Medium.ttf */; };
 		60768025C9644690834C935D /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5892CB56C89423996098A78 /* Poppins-MediumItalic.ttf */; };
 		677AAE0775BA467CABEB2268 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8126FB92E724AB1BA10B207 /* Ubuntu-Light.ttf */; };
 		6816E86BF9524092981EC5DC /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7A1E1FCCE75423CA25E1C7E /* Roboto-Italic.ttf */; };
-		70E65F18CBF6D08F93B9F627 /* libPods-DesaRaya.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93862FAE5C8DEDB4E43EB0A9 /* libPods-DesaRaya.a */; };
+		700B99CB65459A437FD76BD7 /* Pods_DesaRaya_DesaRayaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5AE68E14619EC41E9E6BE6 /* Pods_DesaRaya_DesaRayaTests.framework */; };
 		7453F14CC27A405386F5C6FC /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20EBF3562C0742688F4B077C /* Roboto-Light.ttf */; };
-		74A2AD925A6EE3B90A650DE0 /* libPods-DesaRaya-DesaRayaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C227E0A3E95BB8F0515630F1 /* libPods-DesaRaya-DesaRayaTests.a */; };
 		75A2D4FC4A9B465E97DF1B14 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B37FF81A9A64227AA1DBF65 /* Roboto-Regular.ttf */; };
 		811D27A87E9C4BF989FC2D10 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5327BA2ACC54FB6AF606180 /* Ubuntu-Italic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -136,14 +136,15 @@
 		866355E5E97B4507A0A8EBAA /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		87197ECCDF5E43C1B6BC3FEC /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../src/assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		8DDC6D87DA6047F385636C3B /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BoldItalic.ttf"; path = "../src/assets/fonts/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
-		93862FAE5C8DEDB4E43EB0A9 /* libPods-DesaRaya.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesaRaya.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC89059C03143459DAC0347 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-LightItalic.ttf"; path = "../src/assets/fonts/Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		9C5AE68E14619EC41E9E6BE6 /* Pods_DesaRaya_DesaRayaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesaRaya_DesaRayaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B9F2CF3A2949649D1BD103 /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		A9008380B90138FFAD2470A4 /* Pods-DesaRaya.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesaRaya.debug.xcconfig"; path = "Target Support Files/Pods-DesaRaya/Pods-DesaRaya.debug.xcconfig"; sourceTree = "<group>"; };
 		AFD414278FA64B45AFB542EB /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-SemiBold.ttf"; path = "../src/assets/fonts/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		B399126059AF45F98AB33690 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../src/assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		B44902DE27A84500ADDC1024 /* WorkSans-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Black.ttf"; path = "../src/assets/fonts/WorkSans-Black.ttf"; sourceTree = "<group>"; };
 		B5327BA2ACC54FB6AF606180 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../src/assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
+		B60A21FB7C1758308FEB4762 /* Pods_DesaRaya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesaRaya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B638C23538ED4D42BA4078AF /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		B7A1E1FCCE75423CA25E1C7E /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		B8126FB92E724AB1BA10B207 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../src/assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		BCC9C0E68F264A97A5EFED43 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Regular.ttf"; path = "../src/assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		BFFE0E0672584B4D93B24F19 /* WorkSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Light.ttf"; path = "../src/assets/fonts/WorkSans-Light.ttf"; sourceTree = "<group>"; };
 		C05D9D9BC00D4C5F81F8753C /* WorkSans-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ThinItalic.ttf"; path = "../src/assets/fonts/WorkSans-ThinItalic.ttf"; sourceTree = "<group>"; };
-		C227E0A3E95BB8F0515630F1 /* libPods-DesaRaya-DesaRayaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesaRaya-DesaRayaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4365BC72409485F9C4F6169 /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Regular.ttf"; path = "../src/assets/fonts/WorkSans-Regular.ttf"; sourceTree = "<group>"; };
 		C469E553EA6748FEAD11C8D5 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		C519860808F74A42BB1A9674 /* WorkSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-LightItalic.ttf"; path = "../src/assets/fonts/WorkSans-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74A2AD925A6EE3B90A650DE0 /* libPods-DesaRaya-DesaRayaTests.a in Frameworks */,
+				700B99CB65459A437FD76BD7 /* Pods_DesaRaya_DesaRayaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E65F18CBF6D08F93B9F627 /* libPods-DesaRaya.a in Frameworks */,
+				53C18B5FE20892FFAEE1D144 /* Pods_DesaRaya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				93862FAE5C8DEDB4E43EB0A9 /* libPods-DesaRaya.a */,
-				C227E0A3E95BB8F0515630F1 /* libPods-DesaRaya-DesaRayaTests.a */,
+				B60A21FB7C1758308FEB4762 /* Pods_DesaRaya.framework */,
+				9C5AE68E14619EC41E9E6BE6 /* Pods_DesaRaya_DesaRayaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -835,6 +835,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";
@@ -912,6 +923,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";

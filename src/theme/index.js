@@ -30,147 +30,200 @@ export const colorModeManager = {
 
 export const FontConfig = StyleSheet.create({
   bodyOne: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 16
   },
   bodyTwo: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 14,
     lineHeight: 20
   },
   bodyThree: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 12,
     letterSpacing: 0.4,
     lineHeight: 16
   },
   bodyFive: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 11,
     letterSpacing: 0.4,
     lineHeight: 16
   },
+  body5: {
+    fontFamily: 'Lexend-Regular',
+    fontSize: 12,
+    letterSpacing: 0.4,
+    lineHeight: 16
+  },
   bodyFour: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 14,
     letterSpacing: 0.4,
     lineHeight: 16
   },
   buttonZero: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 10,
   },
   buttonOne: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 16,
     letterSpacing: 0.5
   },
   buttonZeroTwo: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 14,
   },
+  buttonZeroOne: {
+    fontFamily: 'Lexend-SemiBold',
+    fontSize: 16,
+    lineHeight: 24
+  },
   buttonThree: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
+    fontSize: 12,
+    letterSpacing: 0.4
+  },
+  buttonFour: {
+    fontFamily: 'Lexend-Medium',
+    fontSize: 14,
+  },
+  button5: {
+    fontFamily: 'Lexend-Medium',
+    fontSize: 12,
+  },
+  button3: {
+    fontFamily: 'Lexend-Medium',
+    fontSize: 16,
+  },
+  buttonSix: {
+    fontFamily: 'Lexend-Medium',
+    fontSize: 10,
+  },
+  captionZero: {
+    fontFamily: 'Lexend-Regular',
+    fontSize: 10,
+  },
+  captionMediumOne: {
+    fontFamily: 'Inter-Medium',
+    fontSize: 10
+  },
+  bodySix: {
+    fontFamily: 'Lexend-Regular',
     fontSize: 12,
     letterSpacing: 0.4
   },
   captionZero: {
-    fontFamily: 'WorkSans-Regular',
-    fontSize: 10,
-  },
-  bodySix: {
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 12,
-    letterSpacing: 0.4
   },
   captionOne: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 11,
     lineHeight: 16
   },
   captionTwo: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 12
   },
   captionThree: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 16,
     lineHeight: 22
   },
   captionFour: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 14,
     lineHeight: 22
   },
+  captionFive: {
+    fontFamily: 'Lexend-Regular',
+    fontSize: 9,
+  },
   captionUpperOne: {
-    fontFamily: 'WorkSans-Medium',
-    fontSize: 10
+    fontFamily: 'Lexend-Medium',
+    fontSize: 11
   },
   captionUpperTwo: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 12
   },
   headingOne: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 28
   },
   headingTwo: {
-    fontFamily: 'WorkSans-Bold',
+    fontFamily: 'Lexend-Bold',
     fontSize: 24,
     lineHeight: 32,
   },
   headingThree: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 18,
     lineHeight: 22,
   },
   headingFour: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 16
   },
   titleFour: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 14,
     lineHeight: 20,
     letterSpacing: 0.1
   },
   titleSemiBoldFour: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 12,
     lineHeight: 20,
     letterSpacing: 0.1
   },
   titleSeven: {
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Lexend-SemiBold',
     fontSize: 14,
   },
   linkOne:{
-    fontFamily: 'WorkSans-Regular',
+    fontFamily: 'Lexend-Regular',
     fontSize: 14,
     letterSpacing: 0.25
   },
   titleOne: {
-    fontFamily: 'WorkSans-SemiBold',
-    fontSize: 20,
+    fontFamily: 'Lexend-Bold',
+    fontSize: 22,
+    lineHeight: 28
+  },
+  title1: {
+    fontFamily: 'Lexend-SemiBold',
+    fontSize: 22,
+    lineHeight: 28
   },
   titleTwo: {
-    fontFamily: 'WorkSans-Bold',
+    fontFamily: 'Lexend-Bold',
     fontSize: 16,
     letterSpacing: 0.1,
     lineHeight: 22
   },
   titleThree: {
-    fontFamily: 'WorkSans-Bold',
+    fontFamily: 'Lexend-Bold',
     fontSize: 14,
     letterSpacing: 0.1,
     lineHeight: 20
   },
+  title3: {
+    fontFamily: 'Lexend-SemiBold',
+    fontSize: 18,
+  },
   titleFive: {
-    fontFamily: 'WorkSans-Bold',
+    fontFamily: 'Lexend-Bold',
     fontSize: 10,
   },
+  title5: {
+    fontFamily: 'Lexend-SemiBold',
+    fontSize: 12,
+  },
   titleSix: {
-    fontFamily: 'WorkSans-Medium',
+    fontFamily: 'Lexend-Medium',
     fontSize: 24,
     lineHeight: 30,
     width: '90%'
@@ -193,17 +246,20 @@ export const Color = {
   neutralZeroFour: '#E0E0E0',
   neutralZeroSeven: '#757575',
   neutralZeroFive: '#C2C2C2',
-  neutralEleven: '#1F1F1F',
   neutralZeroSix: '#9E9E9E',
   neutralTen: '#0A0A0A',
+  secondaryMain: "#4744D5",
+  neutral70: '#757575',
+  neutral40: '#E3E8EF',
+  neutral100: '#121926',
   linear: '#E02638',
-  primaryMain: "#00AB5D",
+  primaryMain: "#008700",
   primaryText: '#262626',
   neutralColorGrayThirteen: "#000",
   neutralColorGrayEight: "#595959",
   neutralColorGrayNine: "#434343",
   secondaryText: "#8c8c8c",
-  secondaryMain: '#624FA1',
+  secondaryMain: '#A6E102',
   lightBorder: '#d9d9d9',
   grayOne: '#FFFFFF',
   grayFour: '#F0F0F0',
@@ -229,7 +285,7 @@ export const Color = {
   successSurface: '#F0FFF3',
   goldSix: '#FAAD14',
   neutralZeroThree: '#EDEDED',
-  purple: '#624FA1',
+  purple: '#4744D5',
   magenta: '#E0195E',
   hitam: '#000000',
   putih: '#FFFFFF',

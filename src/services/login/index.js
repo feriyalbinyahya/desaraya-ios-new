@@ -1,4 +1,6 @@
 import { Request } from "..";
+import { prefixApp } from "../../utils/environment";
+import TestRequest from "../TestRequest";
 
 let headers = {
     'Accept': 'application/json',
@@ -7,19 +9,23 @@ let headers = {
 
 
 login = (data) => {
-    return Request.post("user/login", data, {headers: headers});
+    return Request.post(`${prefixApp}user/login`, data, {headers: headers});
 }
 
 forgetPassword = (data) => {
-    return Request.post("user/lupa-password", data, {headers: headers});
+    return Request.post(`${prefixApp}user/lupa-password`, data, {headers: headers});
 }
 
 appVersion = (version) => {
-    return Request.get(`app-version?app_version=${version}`, {headers: headers});
+    return Request.get(`${prefixApp}app-version?app_version=${version}`, {headers: headers});
 }
 
 pendukung = () => {
-    return Request.get(`pendukung`, {headers: headers});
+    return Request.get(`${prefixApp}pendukung`, {headers: headers});
+}
+
+testAja = () => {
+    return TestRequest.get(`api/breeds/image/random`, {headers: headers});
 }
 
 
@@ -27,7 +33,8 @@ const LoginServices = {
     login,
     forgetPassword,
     appVersion,
-    pendukung
+    pendukung,
+    testAja
   };
   
   export default LoginServices;
