@@ -15,24 +15,29 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import CustomButton from '../../../components/customButton'
 import SelectView from '../../../components/bottomSheet/select'
 import Utils from '../../../utils/Utils'
-import ChildrenButton from '../../../components/customButtonChildren'
 import { launchImageLibrary } from 'react-native-image-picker'
+import ChildrenButton from '../../../components/customButtonChildren'
 
-const BuatLaporanScreen = ({navigation, route}) => {
-  const { jenisLaporan, typeLaporan, id } = route.params;
-  const [photoKegiatan, setPhotoKegiatan] = useState([]);
+const UbahLaporanScreen = ({navigation, route}) => {
+  const {
+    jenisLaporan, typeLaporan, id,
+    alamat, long,
+    lat, title, nama_dokumen,
+    umpan_balik, desc, tahapan, file_dokumen,
+    foto_kegiatan } = route.params;
+  const [photoKegiatan, setPhotoKegiatan] = useState(foto_kegiatan);
   const [tagTeman, setTagTeman] = useState([]);
   const [tagNamaTeman, setTagNamaTeman] = useState([]);
-  const [judul, setJudul] = useState("");
-  const [deskripsi, setDeskripsi] = useState("");
-  const [saran, setSaran] = useState("");
-  const [capres, setCapres] = useState("");
+  const [judul, setJudul] = useState(title);
+  const [deskripsi, setDeskripsi] = useState(desc);
+  const [saran, setSaran] = useState(umpan_balik);
+  const [capres, setCapres] = useState(tahapan);
   const [idCapres, setIdCapres] = useState("");
   const [tag, setTag] = useState("");
   const [idTag, setIdTag] = useState(0);
-  const [lokasi, setLokasi] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [lokasi, setLokasi] = useState(alamat);
+  const [latitude, setLatitude] = useState(lat);
+  const [longitude, setLongitude] = useState(long);
   const [isContinue, setIsContinue] = useState(false);
   const [countPhoto, setCountPhoto] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -43,15 +48,15 @@ const BuatLaporanScreen = ({navigation, route}) => {
   const [message, setMessage] = useState('');
   const [isDeskripsi, setIsDeskripsi] = useState(true);
   const [fileSize, setFileSize] = useState([]);
-  const [showAlertPhotoMoreSize, setShowAlertPhotoMoreSize] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalPhotoVisible, setModalPhotoVisible] = useState(false);
   const [perkiraanPartisipan, setPerkiraanPartisipan] = useState("");
   const [isModalTemanVisible, setIsModalTemanVisible] = useState(false);
-  const [isModalPhotoVisible, setModalPhotoVisible] = useState(false);
+  const [showAlertPhotoMoreSize, setShowAlertPhotoMoreSize] = useState(false);
   const [firstname, setFirstname] = useState("");
-  const [namaFile, setNamaFile] = useState("");
+  const [namaFile, setNamaFile] = useState(nama_dokumen);
   const [hapusDoc, setHapusDoc] = useState(false);
-  const [filePdf, setFilePdf] = useState("");
+  const [filePdf, setFilePdf] = useState(file_dokumen);
   const [showAlertYakinKirim, setShowAlertYakinKirim] = useState(false);
   const [showAlertFileBig, setShowAlertFileBig] = useState(false);
   const desc_required = useSelector((state)=>{
@@ -110,7 +115,19 @@ const BuatLaporanScreen = ({navigation, route}) => {
 
   handleLanjutkan = () => {
     setIsLoading(true);
-    LaporanServices.createLaporan(id ,{
+    console.log({
+        "tipe_laporan": `Laporan ${typeLaporan}`,
+        "judul": judul,
+        "tahapan": capres,
+        "deskripsi": deskripsi,
+        "geotagging_alamat": lokasi,
+        "geotagging_longlat": `${longitude}, ${latitude}`,
+        "foto_kegiatan": photoKegiatan,
+        "file_dokumen": filePdf,
+        "nama_dokumen": namaFile,
+        "saran": saran
+    })
+    LaporanServices.updateLaporan(id ,{
       "tipe_laporan": `Laporan ${typeLaporan}`,
       "judul": judul,
       "tahapan": capres,
@@ -123,9 +140,9 @@ const BuatLaporanScreen = ({navigation, route}) => {
       "saran": saran
   })
   .then(res=>{
-    console.log(res.data);
-    if(res.data.message == "Berhasil mengirim laporan."){
-      navigation.navigate('LaporanTerkirim');
+    console.log(res.data.message);
+    if(res.data.message == "Berhasil memperbarui laporan."){
+      navigation.navigate('LaporanDiubah');
     }else{
       setShowAlert(true);
       setMessage(res.data.message);
@@ -133,7 +150,7 @@ const BuatLaporanScreen = ({navigation, route}) => {
     setIsLoading(false);
   })
   .catch(err=>{
-    console.log(err.response);
+    console.log(err);
   })
   }
 
@@ -288,7 +305,7 @@ const BuatLaporanScreen = ({navigation, route}) => {
       <CustomBottomSheet children={<UbahPhotoModal />} 
         isModalVisible={isModalPhotoVisible} setModalVisible={setModalPhotoVisible} 
         title="Unggah foto laporan" />
-      <HeaderWhite navigation={navigation} title="Buat Laporan" />
+      <HeaderWhite navigation={navigation} title="Ubah Laporan" />
       <ScrollView nestedScrollEnabled={true} style={{padding: 20}}>
       {
         photoKegiatan.length == 0 ? 
@@ -335,7 +352,7 @@ const BuatLaporanScreen = ({navigation, route}) => {
         <CustomInput value={judul} setValue={setJudul} placeholder="Judul Kegiatan" />
         <View style={{height: 10}}></View>
         <Text style={{...FontConfig.bodyTwo, color:Color.secondaryText, paddingBottom: 10}}>{`Deskripsi ${typeLaporan}`}</Text>
-        <CustomInput type='textarea' value={deskripsi} setValue={setDeskripsi} placeholder="Deskripsi"
+        <CustomInput value={deskripsi} setValue={setDeskripsi} placeholder="Deskripsi"
         width='100%' height={100} />
         <Text style={{...styles.textMasukanDeskripsi, color: isDeskripsi ? Color.secondaryText : Color.danger}}>
           {desc_required ? `Masukan deskripsi maksimal 350 karakter.` : `Masukan deskripsi maksimal 350 karakter. (Opsional)`}
@@ -362,16 +379,16 @@ const BuatLaporanScreen = ({navigation, route}) => {
         childLeft={<Ionicons name="locate-outline" color={Color.secondaryText} size={16} style={{paddingRight: 5}} />} />
         <View style={{height: 10}}></View>
         {typeLaporan != "Kendala" ? <><Text style={{...FontConfig.bodyTwo, color:Color.secondaryText, paddingBottom: 10}}>{`Saran/Umpan Balik (opsional)`}</Text>
-        <CustomInput value={saran} type='textarea' setValue={setSaran} placeholder="Tulis saran atau umpan balikmu disini..."
+        <CustomInput value={saran} setValue={setSaran} placeholder="Tulis saran atau umpan balikmu disini..."
         width='100%' height={100} /></> : <></>}
-        <View style={{height: 80}}></View>
+        <View style={{height: 30}}></View>
       </ScrollView>
       <View style={styles.bottomSection}>
         <View style={styles.buttonContinue}>
         <CustomButton
             onPress={handleLanjutkan} 
             fontStyles={{...FontConfig.buttonOne, color: Color.neutralZeroOne}}
-            width='100%' height={44} text="Kirim"
+            width='100%' height={44} text="Simpan Perubahan"
             disabled={!isContinue}
             backgroundColor={Color.primaryMain}
             />
@@ -406,30 +423,30 @@ const BuatLaporanScreen = ({navigation, route}) => {
             setShowAlert(false);
           }}
         />
-        <AwesomeAlert
-          show={showAlertPhotoMoreSize}
-          showProgress={false}
-          title="Ukuran file foto terlalu besar"
-          message="Jumlah ukuran foto tidak boleh melebihi 10 Mb. Silakan upload foto kembali"
-          closeOnTouchOutside={false}
-          closeOnHardwareBackPress={false}
-          showCancelButton={false}
-          showConfirmButton={true}
-          confirmText="Mengerti"
-          titleStyle={{...FontConfig.titleTwo, color: Color.title}}
-          messageStyle={{...FontConfig.bodyThree, color: Color.grayEight}}
-          confirmButtonStyle={{backgroundColor: Color.primaryMain, width: '40%', alignItems: 'center'}}
-          confirmButtonTextStyle={{...FontConfig.buttonThree}}
-          confirmButtonColor="#DD6B55"
-          onConfirmPressed={() => {
-            setShowAlertPhotoMoreSize(false);
-          }}
-        />
+      <AwesomeAlert
+        show={showAlertPhotoMoreSize}
+        showProgress={false}
+        title="Ukuran file foto terlalu besar"
+        message="Jumlah ukuran foto tidak boleh melebihi 10 Mb. Silakan upload foto kembali"
+        closeOnTouchOutside={false}
+        closeOnHardwareBackPress={false}
+        showCancelButton={false}
+        showConfirmButton={true}
+        confirmText="Mengerti"
+        titleStyle={{...FontConfig.titleTwo, color: Color.title}}
+        messageStyle={{...FontConfig.bodyThree, color: Color.grayEight}}
+        confirmButtonStyle={{backgroundColor: Color.primaryMain, width: '40%', alignItems: 'center'}}
+        confirmButtonTextStyle={{...FontConfig.buttonThree}}
+        confirmButtonColor="#DD6B55"
+        onConfirmPressed={() => {
+          setShowAlertPhotoMoreSize(false);
+        }}
+      />
     </SafeAreaView>
   )
 }
 
-export default BuatLaporanScreen
+export default UbahLaporanScreen
 
 const styles = StyleSheet.create({
   uploadSection: {
@@ -450,11 +467,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 4},
     shadowRadius: 3,
     shadowColor: 'black',
-    elevation: 10,
-    zIndex: 1,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%'
+    elevation: 10
   },
   buttonContinue: {
     borderRadius: 20, 
@@ -503,10 +516,6 @@ const styles = StyleSheet.create({
     height: 17,
     right: 3,
     top: 0
-  },
-  textModal: {
-    ...FontConfig.bodyOne,
-    color: Color.primaryMain
   },
   phoneInput: {
     height: 45,

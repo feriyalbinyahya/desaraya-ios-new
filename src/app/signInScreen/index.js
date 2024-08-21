@@ -33,6 +33,7 @@ const SignInPage = ({navigation}) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const handleLupaKatSandi = () => {
+    navigation.navigate("LupaPassword");
   }
 
   const handleLogin = () => {

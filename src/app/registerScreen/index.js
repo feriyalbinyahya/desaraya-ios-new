@@ -162,7 +162,7 @@ const RegisterScreen = ({navigation}) => {
         {isPasswordMatch? <></>: <FormErrorMessage text="Kata sandi yang dimasukkan tidak sama dengan yang kamu buat." />}
 
         <View style={{height: 20}}></View>
-        <CustomButton disabled={false} onPress={handleDevelopButton} fontStyles={{...FontConfig.buttonOne, color: 'white'}} 
+        <CustomButton disabled={false} onPress={handleDaftarButton} fontStyles={{...FontConfig.buttonOne, color: 'white'}} 
             text="Daftar" backgroundColor={Color.primaryMain} height={44} />
         <View style={styles.tidakPunyaAkun}>
             <Text style={styles.textBelumPunyaAkun}>Belum punya akun?</Text>

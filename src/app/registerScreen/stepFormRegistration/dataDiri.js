@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, Button, Image, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Button, Image } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import HeaderRegistration from '../../../components/headerRegistration'
 import { Color, FontConfig } from '../../../theme'
@@ -8,144 +8,181 @@ import CustomBottomSheet from '../../../components/bottomSheet'
 import GenderChoice from '../../../components/bottomSheet/genderChoice'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteTemporary, setDataDiriRegistration } from '../../../redux/registration'
-import DateTimePicker from '@react-native-community/datetimepicker';
-import CustomButton from '../../../components/customButton'
-import InterestChoice from '../../../components/bottomSheet/InterestChoice'
 import RegistrationService from '../../../services/registration'
+import AwesomeAlert from 'react-native-awesome-alerts';
+import CustomButton from '../../../components/customButton'
 import DatePicker from 'react-native-date-picker'
-import JobChoice from '../../../components/bottomSheet/jobChoice'
+
+
+import InterestChoice from '../../../components/bottomSheet/InterestChoice'
+
+
 
 const DataDiriScreen = ({navigation}) => {
-    const dispatch = useDispatch();
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [isFirstname, setIsFirstname] = useState(true);
-    const [isLastname, setIsLastname] = useState(true);
-    const [username, setUsername] = useState('');
-    const [job, setJob] = useState('');
-    const [idJob, setIdJob] = useState(0);
-    const [jobData, setJobData] = useState([]);
-    const [gender, setGender] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-  
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-    const [isContinue, setIsContinue] = useState(false);
-    const [bio, setBio] = useState(""); 
-    const [instagram, setInstagram] = useState("");
-    const [tiktok, setTiktok] = useState("");
-    const [twitter, setTwitter] = useState("");
-    const [facebook, setFacebook] = useState("");
-    const [isModalJobVisible, setIsModalJobVisible] = useState(false);
-    const [interest, setInterest] = useState("");
-    const [interestData, setInterestData] = useState([]);
-    const [idInterest, setIdInterest] = useState("");
-  
-  
-  
-    const setOldJob = (data, id) => {
-      setJob(data);
-      setIdJob(id);
+  const dispatch = useDispatch();
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [isFirstname, setIsFirstname] = useState(true);
+  const [isLastname, setIsLastname] = useState(true);
+  const [username, setUsername] = useState('');
+  const [job, setJob] = useState('');
+  const [idJob, setIdJob] = useState(0);
+  const [gender, setGender] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [isContinue, setIsContinue] = useState(false);
+  const [usernameExist, setUsernameExist] = useState(false);
+  const [bio, setBio] = useState("");
+  const [isBio, setIsBio] = useState(true); 
+  const [instagram, setInstagram] = useState("");
+  const [tiktok, setTiktok] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [isModalKomunitasVisible, setIsModalKomunitasVisible] = useState(false);
+  const [komunitas, setKomunitas] = useState("");
+  const [isModalInterestVisible, setIsModalInterestVisible] = useState(false);
+  const [interest, setInterest] = useState("");
+  const [interestData, setInterestData] = useState([]);
+  const [interestLoading, setInterestLoading] = useState(false);
+  const [idInterest, setIdInterest] = useState(1);
+
+
+
+  const setOldJob = (data, id) => {
+    setJob(data);
+    setIdJob(id);
+  }
+
+  handleJobButton = () => {
+    navigation.navigate('DropDown', {title: 'Pekerjaan', item: job, onGoBack: setOldJob, id: idJob, properti: ''});
+  }
+
+  handleGenderButton = () => {
+    setModalVisible(true);
+  }
+
+  handleDateButton = () => {
+    setIsCalendarVisible(!isCalendarVisible);
+  }
+
+  handleValidation = () => {
+    if(firstname && lastname && job && gender && dateOfBirth && (instagram || tiktok || facebook || twitter) && bio){
+      setIsContinue(true);
+    }else{
+      setIsContinue(false);
     }
-  
-    handleJobButton = () => {
-      setIsModalJobVisible(true);
+  }
+
+  const getInterestData = () =>{
+    setInterestLoading(true);
+    RegistrationService.getInterest()
+    .then(res=>{
+      console.log(res.data.data);
+      setInterestData(res.data.data);
+      setInterestLoading(false);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+  const saveDataDiriRegistration = () => {
+    console.log({fullname: `${firstname} ${lastname}`, username: username, job: idJob, bio: bio, gender: gender, dateOfBirth: dateOfBirth})
+    dispatch(
+      setDataDiriRegistration({fullname:`${firstname} ${lastname}`, username: username, job: idJob, bio: bio, interest: [parseInt(idInterest)], 
+      facebook: facebook, instagram: instagram, tiktok: tiktok, twitter: twitter, gender: gender, dateOfBirth: dateOfBirth})
+    );
+  }
+
+  handleLanjutkan = () => {
+    if(username){
+      RegistrationService.checkUsername({"username": username})
+      .then(res=>{
+        console.log(res.data.message);
+        if(res.data.message == "Username belum dipakai."){
+          saveDataDiriRegistration();
+          navigation.navigate("AlamatLengkapRegister");
+        }else{
+          setUsernameExist(true);
+        }
+      })
+    }else{
+      saveDataDiriRegistration();
+      navigation.navigate("AlamatLengkapRegister");
     }
-  
-    handleGenderButton = () => {
-      setModalVisible(true);
-    }
-  
-    handleDateButton = () => {
-      setIsCalendarVisible(!isCalendarVisible);
-    }
-  
-    handleValidation = () => {
-      if(firstname && lastname && job && gender && dateOfBirth ){
-        setIsContinue(true);
-      }else{
-        setIsContinue(false);
-      }
+  }
+
+  useEffect(()=>{
+    getInterestData();
+  }, [])
+
+  useEffect(()=> {
+    handleValidation();
+  }, [dateOfBirth, job, gender, firstname, lastname, bio, instagram, tiktok, facebook, twitter, interest]);
+
+  const handleDateChange = (currentDate) => {
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth()+1;
+    let date = currentDate.getDate();
+    if(month < 10){
+      month = `0${currentDate.getMonth()+1}`;
     }
 
-    const getJobData = () =>{
-        RegistrationService.getAllPekerjaan()
-        .then(res=>{
-          console.log(res.data);
-          setJobData(res.data.data);
-        })
-        .catch(err=>{
-          console.log(err);
-        })
-      }
-  
-  
-    const saveDataDiriRegistration = () => {
-      console.log({fullname: `${firstname} ${lastname}`, username: username, job: idJob, bio: bio, gender: gender, dateOfBirth: dateOfBirth})
-      dispatch(
-        setDataDiriRegistration({fullname:`${firstname} ${lastname}`, username: username, job: idJob, bio: bio, interest: [parseInt(idInterest)], 
-        facebook: facebook, instagram: instagram, tiktok: tiktok, twitter: twitter, gender: gender, dateOfBirth: dateOfBirth})
-      );
+    if (date < 10){
+      date = `0${currentDate.getDate()}`
     }
-  
-    handleLanjutkan = () => {
-        saveDataDiriRegistration();
-        navigation.navigate("AlamatLengkapRegister");
-    }
+    console.log(`${year}/${month}/${date}`);
+    setDateOfBirth(`${year}/${month}/${date}`);
+  }
 
-    useEffect(()=>{
-        getJobData();
-    },[])
-  
-    useEffect(()=> {
-      handleValidation();
-    }, [dateOfBirth, job, gender, firstname, lastname]);
-  
-    const handleDateChange = (currentDate) => {
-      let year = currentDate.getFullYear();
-      let month = currentDate.getMonth()+1;
-      let date = currentDate.getDate();
-      if(month < 10){
-        month = `0${currentDate.getMonth()+1}`;
-      }
-  
-      if (date < 10){
-        date = `0${currentDate.getDate()}`
-      }
-      console.log(`${year}/${month}/${date}`);
-      setDateOfBirth(`${year}/${month}/${date}`);
+  useEffect(()=>{
+    if(bio.length > 280){
+      setIsBio(false);
+    }else{
+      setIsBio(true);
     }
-  
-    return (
-      <SafeAreaView style={{flex:1, backgroundColor: Color.neutralZeroOne}}>
-        <CustomBottomSheet children={<GenderChoice gender={gender} setModalVisible={setModalVisible} setGender={setGender} />} 
-        isModalVisible={isModalVisible} setModalVisible={setModalVisible} title="Pilih Jenis Kelamin" />
-        <CustomBottomSheet children={<JobChoice id={idJob} setId={setIdJob} data={jobData} item={job} setModalVisible={setIsModalJobVisible} setItem={setJob} />} 
-        isModalVisible={isModalJobVisible} setModalVisible={setIsModalJobVisible} title="Pilih Pekerjaan" />
-        <HeaderRegistration navigation={navigation} numberStep={1} />
-        <ScrollView>
-          <View style={styles.topSection}>
-            <Text style={styles.textIsiData}>Isi data diri</Text>
-            <Text style={styles.textLengkapi}>Lengkapi data dirimu dan pastikan data yang dimasukkan sudah benar</Text>
-            <View style={styles.boxForm}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{width: '45%'}}>
-                  <Text style={styles.titleFormInput}>Nama Depan</Text>
-                  <CustomInput inputNotWrong={isFirstname} value={firstname} setValue={setFirstname} placeholder="Nama depan" />
-                </View>
-                <View style={{width: '5%'}}></View>
-                <View style={{width: '45%'}}>
-                  <Text style={styles.titleFormInput}>Nama Belakang</Text>
-                  <CustomInput inputNotWrong={isLastname} value={lastname} setValue={setLastname} placeholder="Nama belakang" />
-                </View>
+  }, [bio])
+
+  return (
+    <View style={{flex:1, backgroundColor: Color.neutralZeroOne}}>
+      <CustomBottomSheet children={<GenderChoice gender={gender} setModalVisible={setModalVisible} setGender={setGender} />} 
+      isModalVisible={isModalVisible} setModalVisible={setModalVisible} title="Pilih Jenis Kelamin" />
+      <CustomBottomSheet children={<InterestChoice id={idInterest} setId={setIdInterest} data={interestData} item={interest} setModalVisible={setIsModalInterestVisible} setItem={setInterest} />} 
+      isModalVisible={isModalInterestVisible} setModalVisible={setIsModalInterestVisible} title="Pilih Interest" />
+      <HeaderRegistration navigation={navigation} numberStep={1} />
+      <ScrollView>
+        <View style={styles.topSection}>
+          <Text style={styles.textIsiData}>Isi data diri</Text>
+          <Text style={styles.textLengkapi}>Lengkapi data dirimu dan pastikan data yang dimasukkan sudah benar</Text>
+          <View style={styles.boxForm}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{width: '45%'}}>
+                <Text style={styles.titleFormInput}>Nama Depan</Text>
+                <CustomInput inputNotWrong={isFirstname} value={firstname} setValue={setFirstname} placeholder="Nama depan" />
               </View>
-              <Text style={styles.titleFormInput}>Pekerjaan</Text>
-              <DropDownButton placeholder='Pilih pekerjaan' text={job} onPress={handleJobButton} />
-              <Text style={styles.titleFormInput}>Jenis Kelamin</Text>
-              <DropDownButton placeholder='Pilih' text={gender} onPress={handleGenderButton} />
-              <Text style={styles.titleFormInput}>Tanggal Lahir</Text>
-              <DropDownButton placeholder='Pilih' text={dateOfBirth} onPress={handleDateButton} />
-              <DatePicker 
+              <View style={{width: '5%'}}></View>
+              <View style={{width: '45%'}}>
+                <Text style={styles.titleFormInput}>Nama Belakang</Text>
+                <CustomInput inputNotWrong={isLastname} value={lastname} setValue={setLastname} placeholder="Nama belakang" />
+              </View>
+            </View>
+            <Text style={styles.titleFormInput}>{`Username (Optional)`}</Text>
+            <CustomInput value={username} setValue={setUsername} placeholder="ex: bimakusuma" />
+            <Text style={styles.titleFormInput}>Tentangmu</Text>
+            <CustomInput value={bio} setValue={setBio} type='textarea' width='100%'
+             placeholder="Tulis tentangmu dan komunitas yang kamu ikuti" />
+             <Text style={{...styles.textMasukanDeskripsi, color: isBio ? Color.secondaryText : Color.danger}}>
+              Maksimal 280 karakter.
+            </Text>
+            <Text style={styles.titleFormInput}>Pekerjaan</Text>
+            <DropDownButton placeholder='Pilih pekerjaan' text={job} onPress={handleJobButton} />
+            <Text style={styles.titleFormInput}>Jenis Kelamin</Text>
+            <DropDownButton placeholder='Pilih' text={gender} onPress={handleGenderButton} />
+            <Text style={styles.titleFormInput}>Tanggal Lahir</Text>
+            <DropDownButton placeholder='yyyy/mm/dd' text={dateOfBirth.toString()} onPress={handleDateButton} />
+            <DatePicker 
               modal
               mode='date'
               open={isCalendarVisible}
@@ -157,81 +194,132 @@ const DataDiriScreen = ({navigation}) => {
               onCancel={()=>{
                 setIsCalendarVisible(false);
               }}
-              />
+            />
+            <View style={{height: 10}}></View>
+            
+             {/**Media sosial */}
+            <View style={styles.mediaSosial}>
+              <Text style={{...FontConfig.titleThree, color: '#000000'}}>Media Sosial</Text>
+              <View style={{height: 3}}></View>
+              <Text style={{...FontConfig.captionOne, color: '#757575'}}>{`Paling tidak harap isi 1 (satu) media sosialmu.`}</Text>
+              <View>
+                <View style={{height: 10}}></View>
+                <Text style={{...FontConfig.bodyTwo, color: Color.secondaryText}}>Instagram</Text>
+                <View style={{height: 5}}></View>
+                <CustomInput placeholder="Nama akun/username" 
+                value={instagram} setValue={setInstagram}
+                iconLeft={'instagram'} />
+                <View style={{height: 10}}></View>
+                <Text style={{...FontConfig.bodyTwo, color: Color.secondaryText}}>Tiktok</Text>
+                <View style={{height: 5}}></View>
+                <CustomInput placeholder="Nama akun/username" 
+                value={tiktok} setValue={setTiktok} iconLeft={'tiktok'} />
+                <View style={{height: 10}}></View>
+                <Text style={{...FontConfig.bodyTwo, color: Color.secondaryText}}>Twitter</Text>
+                <View style={{height: 5}}></View>
+                <CustomInput placeholder="Nama akun/username" 
+                value={twitter} setValue={setTwitter} iconLeft={'twitter'} />
+                <View style={{height: 10}}></View>
+                <Text style={{...FontConfig.bodyTwo, color: Color.secondaryText}}>Facebook</Text>
+                <View style={{height: 5}}></View>
+                <CustomInput placeholder="Nama akun/username" 
+                value={facebook} setValue={setFacebook} iconLeft={'facebook'} />
+              </View>
+              <View style={{height: 5}}></View>
             </View>
           </View>
-        </ScrollView>
-        <View style={styles.bottomSection}>
-          <View style={styles.buttonContinue}>
-            <CustomButton
-                onPress={handleLanjutkan} 
-                fontStyles={{...FontConfig.buttonOne, color: Color.neutralZeroOne}}
-                width='100%' height={44} text="Lanjutkan"
-                disabled={!isContinue}
-                backgroundColor={Color.primaryMain}
-                />
-          </View>
         </View>
-      </SafeAreaView>
-    )
-  }
-  
-  export default DataDiriScreen
-  
-  const styles = StyleSheet.create({
-      boxForm: {
-        marginTop: 10
-      },
-      buttonContinue: {
-        borderRadius: 20, 
-        width: '80%',
-      },
-      topSection: {
-          paddingHorizontal: 20,
-          paddingVertical: 20,
-          backgroundColor: '#FFFF'
-      },
-      iconStyle: {
-        width: 20,
-        height: 20,
-      },
-      mediaSosial: {
-        paddingTop: 20
-      },
-      textIsiData: {
-          ...FontConfig.titleOne,
-          color: Color.grayThirteen,
-      },
-      textLengkapi: {
-          ...FontConfig.bodyTwo,
-          color: Color.graySeven,
-          marginTop: 5
-      },
-      titleFormInput:{
-        color: Color.secondaryText,
+      </ScrollView>
+      <View style={styles.bottomSection}>
+        <View style={styles.buttonContinue}>
+          <CustomButton
+              onPress={handleLanjutkan} 
+              fontStyles={{...FontConfig.buttonOne, color: Color.neutralZeroOne}}
+              width='100%' height={44} text="Lanjutkan"
+              disabled={!isContinue}
+              backgroundColor={Color.primaryMain}
+              />
+        </View>
+      </View>
+      <AwesomeAlert
+          show={usernameExist}
+          showProgress={false}
+          title="Username sudah dipakai"
+          message="Silakan masukkan username yang lain"
+          closeOnTouchOutside={false}
+          closeOnHardwareBackPress={false}
+          showCancelButton={false}
+          showConfirmButton={true}
+          confirmText="Coba Lagi"
+          titleStyle={{...FontConfig.titleTwo, color: Color.title}}
+          messageStyle={{...FontConfig.bodyTwo, color: Color.grayEight}}
+          confirmButtonStyle={{backgroundColor: Color.primaryMain}}
+          confirmButtonTextStyle={{...FontConfig.buttonThree}}
+          confirmButtonColor="#DD6B55"
+          onConfirmPressed={() => {
+            setUsernameExist(false);
+          }}
+        />
+    </View>
+  )
+}
+
+export default DataDiriScreen
+
+const styles = StyleSheet.create({
+    boxForm: {
+      marginTop: 10
+    },
+    buttonContinue: {
+      borderRadius: 20, 
+      width: '80%',
+    },
+    topSection: {
+        paddingHorizontal: 20,
+        paddingVertical: 20,
+        backgroundColor: '#FFFF'
+    },
+    iconStyle: {
+      width: 20,
+      height: 20,
+    },
+    mediaSosial: {
+      paddingTop: 20
+    },
+    textIsiData: {
+        ...FontConfig.titleOne,
+        color: Color.grayThirteen,
+    },
+    textLengkapi: {
         ...FontConfig.bodyTwo,
-        marginTop: 10,
-        marginBottom: 1
-      },
-      textMasukanDeskripsi: {
-        ...FontConfig.bodyThree,
-        marginVertical: 5
-      },
-      boxDate: {
-        borderRadius: 10 , 
-        shadowOffset: {width: 2, height: 2},
-      },
-      bottomSection: {
-        backgroundColor: Color.neutralZeroOne,
-        height: '12%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        shadowOpacity: 1,
-        shadowOffset: {width: 2, height: 4},
-        shadowRadius: 3,
-        shadowColor: 'black',
-        elevation: 10
-      },
-  })
+        color: Color.graySeven,
+        marginTop: 5
+    },
+    titleFormInput:{
+      color: Color.secondaryText,
+      ...FontConfig.bodyTwo,
+      marginTop: 10,
+      marginBottom: 1
+    },
+    textMasukanDeskripsi: {
+      ...FontConfig.bodyThree,
+      marginVertical: 5
+    },
+    boxDate: {
+      borderRadius: 10 , 
+      shadowOffset: {width: 2, height: 2},
+    },
+    bottomSection: {
+      backgroundColor: Color.neutralZeroOne,
+      height: '12%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      shadowOpacity: 1,
+      shadowOffset: {width: 2, height: 4},
+      shadowRadius: 3,
+      shadowColor: 'black',
+      elevation: 10
+    },
+})

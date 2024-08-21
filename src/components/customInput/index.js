@@ -10,6 +10,7 @@ value, iconLeft='', rightPress, leftPress, iconLeftColor, iconRight='', iconRigh
     if(iconLeft != '' && iconRight != ''){
         return (
             <TextInput
+            value={value}
             multiline={type == 'textarea' ? true : false}
             numberOfLines={type == 'textarea' ? 4 : 1}
               placeholder={placeholder}
@@ -29,6 +30,7 @@ value, iconLeft='', rightPress, leftPress, iconLeftColor, iconRight='', iconRigh
     }else if(iconLeft == '' && iconRight != ''){
         return (
             <TextInput
+            value={value}
             multiline={type == 'textarea' ? true : false}
             numberOfLines={type == 'textarea' ? 4 : 1}
               placeholder={placeholder}
@@ -48,6 +50,7 @@ value, iconLeft='', rightPress, leftPress, iconLeftColor, iconRight='', iconRigh
     }else if(iconLeft != '' && iconRight == ''){
         return (
             <TextInput
+            value={value}
             multiline={type == 'textarea' ? true : false}
             numberOfLines={type == 'textarea' ? 4 : 1}
               placeholder={placeholder}
@@ -66,6 +69,7 @@ value, iconLeft='', rightPress, leftPress, iconLeftColor, iconRight='', iconRigh
     }else{
         return (
             <TextInput
+            value={value}
             multiline={type == 'textarea' ? true : false}
             numberOfLines={type == 'textarea' ? 4 : 1}
               placeholder={placeholder}
